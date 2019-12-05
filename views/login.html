@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../js/vue.js"></script>
+    <script src="../js/axios.min.js"></script>
+    <link rel="stylesheet" href="../css/login.css">
+    <title>登录</title>
+</head>
+
+<body>
+    <div id="login">
+        <input class="login_input" type="text" v-model='user' placeholder="请输入用户名... ...">
+        <input class="login_input" type="password" v-model='password' placeholder="请输入密码... ...">
+        <button class="login_btn" v-on:click="reverseMessage">登录</button>
+    </div>
+
+    <script>
+        var login = new Vue({
+            el: '#login',
+            data: {
+                user: '',
+                password: ''
+            },
+            methods: {
+                reverseMessage: function () {
+                    // alert(this.user + this.password);
+                    axios
+                        .get('http://127.0.0.1:3000/api')
+                        .then(function (response) {
+                            alert(this.user=response);
+                        })
+                        .catch(function (error) { // 请求失败处理
+                            console.log(error);
+                        });
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

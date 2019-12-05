@@ -10,4 +10,5 @@ router.get('/reg', function(req, res, next) {
   res.render('reg');
 });
 
+
 module.exports = router;
